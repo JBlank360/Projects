@@ -4,8 +4,12 @@ random_number = random.randint(1,10)
 # guess = None   This line is required if "break" (Line 21) is not at the end.
 
 while True:
-    guess = input ("Guess a number from 1-10: ")
-    guess = int(guess)
+    try:
+        guess = input ("Guess a number from 1-10: ")
+        guess = int(guess)
+    except ValueError:
+        print("You must enter an integer between 1 and 10.")
+        continue    
     if guess < random_number:
         print ("Your guess is too low")
     elif guess > random_number:
@@ -13,9 +17,9 @@ while True:
     else:
         print ("Congratulations, you guessed correctly!")
         play_again = input ("Do you want to play again? (y/n) ")
-        if play_again == "y":
+        if play_again[0] == "y":
             random_number = random.randint(1,10)
             guess = None
         else:
             print("Thank you for playing!")
-            break # line 6 (While True) requires line 21 (break)        
+            break # line 6 (While True) requires line 21 (break)       
