@@ -1,0 +1,17 @@
+name = input("What is your name? \n")
+age = input ("What is your age? \n")
+age = int(age)
+difference = 100 - age
+year = 2019
+tt100 = (year) + (difference)
+if age > 100:
+    print(f"{name}, You turned 100 in the year {tt100}.")
+else:
+    print (f'Hello {name}, you will turn 100 in the year {tt100}.')
+
+# another method:
+
+  # name = input("What is your name: ")
+  # age = int(input("How old are you: "))
+  # year = str((2019 - age)+100)
+  # print(name + " will be 100 years old in the year " + year)
