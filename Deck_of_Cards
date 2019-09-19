@@ -1,0 +1,48 @@
+from random import shuffle
+
+class Card:
+    def __init__(item, value, suit):
+        item.value = value
+        item.suit = suit
+
+    def __repr__(item):
+        return f"{item.value} of {item.suit}"
+
+class Deck:
+    def __init__(item):
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        values = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+        item.cards = [Card(value, suit) for suit in suits for value in values]
+        print(item.cards)
+         
+    def __repr__(item):
+        return f"Deck of {item.count()} cards"
+    def count(item):
+        return len(item.cards)
+    def _deal(item, num):
+        count = item.count()
+        actual = min([count,num])
+        if count == 0:
+            raise ValueError ("All cards have been dealt")
+        cards = item.cards[-actual:]
+        item.cards = item.cards[:-actual]
+        return cards
+    
+    def deal_card(item):
+        return item._deal(1)[0]
+
+    def deal_hand(item, hand_size):
+        return item._deal(hand_size)
+
+    def shuffle(item):
+        if item.count() < 52:
+            raise ValueError("Only full decks can be shuffled")
+        shuffle(item.cards)
+        #return item
+
+d = Deck()
+d.shuffle()
+card = d.deal_card()
+print(card)
+hand = d.deal_hand(5)
+print(hand)
